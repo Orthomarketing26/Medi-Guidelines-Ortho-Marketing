@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Meta Ads Creative Playbook | Ortho Marketing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F3F4EF;
+    --surface:#FFFFFF;
+    --surface-2:#EAECE4;
+    --ink:#14181D;
+    --ink-soft:#4B5461;
+    --ink-faint:#7B8390;
+    --line:#DBDFD6;
+    --accent:#2547E0;
+    --accent-ink:#0E1C8C;
+    --go:#0E9F6E;
+    --go-bg:#E4F6EE;
+    --stop:#D7263D;
+    --stop-bg:#FBE6E8;
+    --amber:#B4780A;
+    --amber-bg:#FBF0DC;
+    --shadow: 0 1px 2px rgba(20,24,29,.04), 0 8px 24px rgba(20,24,29,.06);
+    --font-display:'Archivo','Arial Narrow',Arial,sans-serif;
+    --font-body:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    --font-mono:'IBM Plex Mono','SFMono-Regular',Consolas,monospace;
+    box-sizing:border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0F1114;
+      --surface:#181B20;
+      --surface-2:#1F232A;
+      --ink:#F1F2EE;
+      --ink-soft:#AAB1BC;
+      --ink-faint:#7C8390;
+      --line:#2B2F37;
+      --accent:#6B85FF;
+      --accent-ink:#C6D0FF;
+      --go:#3BD8A0;
+      --go-bg:#0F2A22;
+      --stop:#FF7A85;
+      --stop-bg:#331419;
+      --amber:#F2B93D;
+      --amber-bg:#332608;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.4);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0F1114; --surface:#181B20; --surface-2:#1F232A; --ink:#F1F2EE; --ink-soft:#AAB1BC;
+    --ink-faint:#7C8390; --line:#2B2F37; --accent:#6B85FF; --accent-ink:#C6D0FF;
+    --go:#3BD8A0; --go-bg:#0F2A22; --stop:#FF7A85; --stop-bg:#331419; --amber:#F2B93D; --amber-bg:#332608;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.4);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-padding-top: calc(84px + env(safe-area-inset-top,0px));}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--font-body);
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent);}
+  h1,h2,h3,h4{font-family:var(--font-display);font-weight:800;line-height:1.08;margin:0 0 .4em;letter-spacing:-.01em;}
+  p{margin:0 0 1em;color:var(--ink);}
+  .soft{color:var(--ink-soft);}
+  .measure{max-width:68ch;}
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    position:sticky; top:0; z-index:40;
+    background:color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid var(--line);
+    padding: calc(12px + env(safe-area-inset-top,0px)) 20px 12px;
+  }
+  .topbar-inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:12px;}
+  .mark{
+    width:30px;height:30px;border-radius:7px;background:var(--ink);color:var(--bg);
+    display:flex;align-items:center;justify-content:center;font-family:var(--font-display);
+    font-weight:900;font-size:15px;flex:none;
+  }
+  .topbar-title{font-family:var(--font-display);font-weight:800;font-size:14px;letter-spacing:.01em;}
+  .topbar-sub{color:var(--ink-faint);font-size:12.5px;margin-left:auto;display:none;}
+  @media (min-width:640px){ .topbar-sub{display:block;} }
+
+  /* ---------- hero ---------- */
+  .hero{max-width:1180px;margin:0 auto;padding:56px 20px 36px;}
+  .hero-kicker{
+    font-family:var(--font-mono); font-size:12.5px; color:var(--accent-ink);
+    background:var(--surface-2); display:inline-block; padding:5px 10px; border-radius:5px;
+    margin-bottom:22px;
+  }
+  .hero h1{font-size:clamp(30px,5vw,52px); max-width:16ch;}
+  .hero-stat{
+    font-family:var(--font-display); font-weight:900; font-size:clamp(44px,9vw,96px);
+    color:var(--accent); line-height:.95; margin:22px 0 6px;
+  }
+  .hero-stat-label{max-width:46ch; font-size:17px; color:var(--ink-soft);}
+  .hero-dek{max-width:62ch;font-size:17px;color:var(--ink-soft);margin-top:26px;}
+  .hero-meta{display:flex;gap:22px;flex-wrap:wrap;margin-top:24px;font-size:13px;color:var(--ink-faint);}
+  .hero-meta strong{color:var(--ink-soft);font-weight:600;}
+
+  /* ---------- layout ---------- */
+  .layout{max-width:1180px;margin:0 auto;padding:0 20px 100px;display:grid;grid-template-columns:220px minmax(0,1fr);gap:52px;}
+  nav.toc{position:sticky;top:78px;align-self:start;max-height:calc(100vh - 100px);overflow-y:auto;padding-right:6px;}
+  nav.toc a{
+    display:block;padding:7px 10px;border-radius:6px;color:var(--ink-soft);text-decoration:none;
+    font-size:13.5px;line-height:1.3;border-left:2px solid transparent;
+  }
+  nav.toc a:hover{color:var(--ink);background:var(--surface-2);}
+  nav.toc .toc-num{font-family:var(--font-mono);color:var(--ink-faint);font-size:11.5px;margin-right:6px;}
+
+  main{min-width:0;}
+  section.block{padding:52px 0;border-top:1px solid var(--line);}
+  section.block:first-child{border-top:none;padding-top:8px;}
+  .block-head{display:flex;gap:16px;align-items:baseline;margin-bottom:22px;}
+  .block-num{font-family:var(--font-mono);font-size:14px;color:var(--ink-faint);flex:none;padding-top:.2em;}
+  .block-head h2{font-size:clamp(22px,3vw,30px);}
+  .block-intro{max-width:68ch;color:var(--ink-soft);font-size:16px;margin-bottom:28px;}
+
+  h3{font-size:18px;margin-top:2em;}
+  h3:first-child{margin-top:0;}
+  h4{font-size:14.5px;text-transform:none;color:var(--ink);margin-top:1.6em;}
+  ul,ol{padding-left:1.15em;margin:0 0 1em;}
+  li{margin-bottom:.45em;}
+  .measure ul, .measure ol, .measure p{max-width:68ch;}
+
+  /* ---------- cards / grids ---------- */
+  .grid-2{display:grid;grid-template-columns:1fr;gap:18px;}
+  @media (min-width:760px){ .grid-2{grid-template-columns:1fr 1fr;} }
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px 24px;box-shadow:var(--shadow);}
+  .card h4{margin-top:0;font-size:16px;}
+  .card .tag{
+    display:inline-block;font-family:var(--font-mono);font-size:11px;color:var(--accent-ink);
+    background:var(--surface-2);padding:3px 8px;border-radius:5px;margin-bottom:10px;
+  }
+  .card ul{margin-bottom:0;}
+
+  /* ---------- tables ---------- */
+  .table-wrap{overflow-x:auto;margin:18px 0 26px;border:1px solid var(--line);border-radius:12px;background:var(--surface);box-shadow:var(--shadow);}
+  table{border-collapse:collapse;width:100%;min-width:640px;font-size:14px;}
+  th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top;}
+  thead th{
+    font-family:var(--font-body);font-weight:600;font-size:12px;letter-spacing:.02em;
+    color:var(--ink-faint);background:var(--surface-2);
+  }
+  tbody tr:last-child td{border-bottom:none;}
+  td.mono, th.mono{font-family:var(--font-mono);font-size:13px;}
+  td .foot{color:var(--ink-faint);font-size:12px;}
+
+  /* ---------- do / dont ---------- */
+  .swap{display:grid;grid-template-columns:1fr;gap:12px;margin:16px 0 22px;}
+  @media (min-width:640px){ .swap{grid-template-columns:1fr 1fr;} }
+  .swap-box{border-radius:10px;padding:14px 16px;font-size:14.5px;}
+  .swap-box.no{background:var(--stop-bg);border:1px solid color-mix(in srgb, var(--stop) 35%, var(--line));}
+  .swap-box.yes{background:var(--go-bg);border:1px solid color-mix(in srgb, var(--go) 35%, var(--line));}
+  .swap-label{font-family:var(--font-mono);font-size:11px;letter-spacing:.03em;margin-bottom:6px;display:flex;align-items:center;gap:6px;}
+  .swap-box.no .swap-label{color:var(--stop);}
+  .swap-box.yes .swap-label{color:var(--go);}
+
+  .callout{border-radius:12px;padding:20px 22px;margin:20px 0;border:1px solid var(--line);}
+  .callout.stop{background:var(--stop-bg);border-color:color-mix(in srgb, var(--stop) 30%, var(--line));}
+  .callout.amber{background:var(--amber-bg);border-color:color-mix(in srgb, var(--amber) 30%, var(--line));}
+  .callout.go{background:var(--go-bg);border-color:color-mix(in srgb, var(--go) 30%, var(--line));}
+  .callout h4{margin-top:0;display:flex;align-items:center;gap:8px;}
+  .callout.stop h4{color:var(--stop);}
+  .callout.amber h4{color:var(--amber);}
+  .callout.go h4{color:var(--go);}
+  .callout p:last-child{margin-bottom:0;}
+
+  /* ---------- diagrams ---------- */
+  .diagram-row{display:grid;grid-template-columns:1fr;gap:26px;margin:20px 0 26px;}
+  @media (min-width:760px){ .diagram-row{grid-template-columns:1fr 1fr;} }
+  .diagram-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px;box-shadow:var(--shadow);}
+  .diagram-card figcaption{font-size:12.5px;color:var(--ink-faint);margin-top:12px;text-align:center;}
+  svg text{font-family:var(--font-mono);}
+
+  /* ---------- checklist ---------- */
+  .qa-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;}
+  .qa-item{
+    display:flex;gap:12px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);
+    border-radius:10px;padding:13px 15px;box-shadow:var(--shadow);
+  }
+  .qa-item input{margin-top:3px;width:17px;height:17px;accent-color:var(--go);flex:none;}
+  .qa-item.is-done{opacity:.55;}
+  .qa-item.is-done label{text-decoration:line-through;}
+  .qa-item label{font-size:14.5px;cursor:pointer;}
+  .qa-item .qa-note{display:block;color:var(--ink-faint);font-size:12.5px;margin-top:2px;}
+  .qa-controls{display:flex;justify-content:flex-end;margin-top:14px;}
+  .qa-controls button{
+    font-family:var(--font-body);font-size:13px;color:var(--ink-soft);background:none;border:1px solid var(--line);
+    padding:7px 12px;border-radius:7px;cursor:pointer;
+  }
+  .qa-controls button:hover{color:var(--ink);border-color:var(--ink-faint);}
+
+  code{font-family:var(--font-mono);font-size:.92em;background:var(--surface-2);padding:.15em .4em;border-radius:4px;}
+
+  footer{max-width:1180px;margin:0 auto;padding:40px 20px 80px;color:var(--ink-faint);font-size:13px;border-top:1px solid var(--line);}
+  footer a{color:var(--ink-soft);}
+
+  @media (max-width:900px){
+    .layout{grid-template-columns:1fr;}
+    nav.toc{
+      position:sticky;top:56px;max-height:none;overflow:visible;
+      display:flex;gap:4px;overflow-x:auto;white-space:nowrap;padding:10px 0;margin-bottom:8px;
+      background:var(--bg);border-bottom:1px solid var(--line);order:-1;
+    }
+    nav.toc a{flex:none;padding:6px 10px;border:1px solid var(--line);border-radius:20px;font-size:12.5px;}
+  }
+  @media print{
+    nav.toc, .topbar{display:none;}
+    section.block{break-inside:avoid;padding:20px 0;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="mark">OM</div>
+    <div class="topbar-title">Meta Ads Creative Playbook</div>
+    <div class="topbar-sub">For designers &amp; editors &middot; Ortho Marketing</div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="hero-kicker">INTERNAL REFERENCE &middot; STATIC + VIDEO &middot; FACEBOOK &amp; INSTAGRAM</div>
+  <h1>The Graphic Designer &amp; Video Editor's Guide to Meta Ads</h1>
+  <div class="hero-stat">&asymp;70%</div>
+  <div class="hero-stat-label">of a Meta video ad's performance is decided before the third second ends. Everything in this playbook exists to protect that window, and to make sure what happens after it still books a consult.</div>
+  <p class="hero-dek">This is the working reference for everyone cutting video or building statics for the ~90 orthodontic and dental accounts on the Ortho Marketing roster: specs, safe zones, hook structure, typography, brand consistency, and the compliance rules specific to advertising orthodontics and dentistry on Meta. Strategy and copy get approved separately; this document governs how the approved brief actually gets built.</p>
+  <div class="hero-meta">
+    <span><strong>Scope:</strong> Meta (Facebook + Instagram) only</span>
+    <span><strong>Audience:</strong> internal and freelance designers/editors</span>
+    <span><strong>Last verified:</strong> September 2026</span>
+  </div>
+</header>
+
+<div class="layout">
+  <nav class="toc" aria-label="Table of contents">
+    <a href="#how-to-use"><span class="toc-num">00</span>How to use this</a>
+    <a href="#personas"><span class="toc-num">01</span>Design for the persona</a>
+    <a href="#specs"><span class="toc-num">02</span>The spec sheet</a>
+    <a href="#principles"><span class="toc-num">03</span>What stops the scroll</a>
+    <a href="#static"><span class="toc-num">04</span>Static ad standards</a>
+    <a href="#video"><span class="toc-num">05</span>Video production</a>
+    <a href="#typography"><span class="toc-num">06</span>Type &amp; captions</a>
+    <a href="#branding"><span class="toc-num">07</span>Brand consistency</a>
+    <a href="#compliance"><span class="toc-num">08</span>Compliance, read this</a>
+    <a href="#files"><span class="toc-num">09</span>Naming &amp; handoff</a>
+    <a href="#testing"><span class="toc-num">10</span>Testing &amp; fatigue</a>
+    <a href="#qa"><span class="toc-num">11</span>QA before upload</a>
+    <a href="#cheatsheet"><span class="toc-num">12</span>One page reference</a>
+    <a href="#sources"><span class="toc-num">13</span>Sources</a>
+  </nav>
+
+  <main>
+
+    <!-- 00 -->
+    <section class="block" id="how-to-use">
+      <div class="block-head"><div class="block-num">00</div><h2>How to use this playbook</h2></div>
+      <div class="block-intro measure">
+        <p>This document is written for the person actually opening Premiere, CapCut, Photoshop, or Figma, not for the account manager writing the strategy. It assumes you already have an approved brief, meaning the keywords, ad copy, and creative mockups have been signed off by the client, and are now turning that brief into files that can be uploaded to Ads Manager.</p>
+        <p>Three rules before anything else:</p>
+        <ul>
+          <li><strong>Specs are fixed, style is not.</strong> Section 2's dimensions and file limits are hard constraints. Everything else in this guide, including hooks, fonts, and pacing, is the current best practice, and best practice moves. Treat it as the default, not a cage.</li>
+          <li><strong>Compliance (Section 8) overrides creativity.</strong> A brilliant cut that violates Meta's Personal Attributes policy or uses an unreleased patient photo doesn't ship. It gets rejected, and rejections that repeat can put a client's whole ad account at risk.</li>
+          <li><strong>This is a living document.</strong> Meta changes placements, safe zones, and policy language several times a year. If something here conflicts with what you see live in Ads Manager, trust Ads Manager and flag the discrepancy to your AM so this doc gets updated.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 01 -->
+    <section class="block" id="personas">
+      <div class="block-head"><div class="block-num">01</div><h2>Design for the persona, not the client logo</h2></div>
+      <p class="block-intro measure">Every account on the roster is built around the same two buyer personas. Swap the doctor's face and the clinic colors, and the visual direction below should hold for almost any of the ~90 accounts. When a brief doesn't specify, default to whichever persona the campaign's targeting is built around.</p>
+
+      <div class="grid-2">
+        <div class="card">
+          <span class="tag">PERSONA A &middot; AGES 30 TO 45</span>
+          <h4>The "Phase 1" Parent</h4>
+          <p class="soft">Researching early intervention for a child, comparing monthly payment plans, and worried about their kid getting teased. They are the payer and the one making the decision; the child is rarely the one watching the ad.</p>
+          <ul>
+            <li>Warm, natural light. Real homes and real waiting rooms, not sterile clinical white.</li>
+            <li>Parent and child together in frame. Reassurance reads faster than a solo shot of the child.</li>
+            <li>Lead with comfort and confidence, not equipment. Tight shots of brackets, wires, or tools read as scary to this buyer.</li>
+            <li>Formats that work: a front desk testimonial, "meet the doctor," a parent explaining the payment plan on camera, before/after framed as a family milestone.</li>
+            <li>Avoid: club or party energy, fast cuts set to trending audio, anything that reads as aimed at a teenager rather than a parent.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag">PERSONA B &middot; AGES 22 TO 35</span>
+          <h4>The "Aesthetic Adult"</h4>
+          <p class="soft">Comparing clear aligner options ahead of a wedding, a new job, or just because they're finally paying for themselves. Speed and invisibility matter more than price.</p>
+          <ul>
+            <li>Sleek and modern, integrated into daily life: office, gym, engagement photos, not a dental chair.</li>
+            <li>Selfie style and UGC framing over polished studio setups; see Section 5 for why this performs better here specifically.</li>
+            <li>Close, well lit smile shots. The aligner should read as nearly invisible in the frame, reinforcing the core promise.</li>
+            <li>Formats that work: "day in my life with aligners," a free digital smile preview demo, a fast before/after with a confident voiceover.</li>
+            <li>Avoid: anything that reads clinical, childlike color palettes, or slow pacing. This persona scrolls fast.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 -->
+    <section class="block" id="specs">
+      <div class="block-head"><div class="block-num">02</div><h2>The spec sheet</h2></div>
+      <p class="block-intro measure">Meta's placement mix has shifted hard toward vertical video. Reels carried <strong>33% of Instagram impressions in Q1 2026</strong>, up from 19% a year earlier, while Feed slipped to 26%. Instagram also retired the standalone Explore feed in January 2026 and folded that traffic into Reels. If a client's asset library is still mostly square static, it isn't built for where the impressions actually are now.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Placement</th><th class="mono">Ratio</th><th class="mono">Export size</th><th>Format</th><th>Max file</th><th>Duration</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Reels &amp; Stories</strong><div class="foot">the default build, design here first</div></td>
+              <td class="mono">9:16</td>
+              <td class="mono">1080&times;1920</td>
+              <td>MP4/MOV, H.264 + AAC</td>
+              <td class="mono">4 GB</td>
+              <td>15 to 30s is the sweet spot<div class="foot">technical cap of 90s</div></td>
+            </tr>
+            <tr>
+              <td><strong>Feed video</strong></td>
+              <td class="mono">4:5</td>
+              <td class="mono">1080&times;1350</td>
+              <td>MP4/MOV, H.264 + AAC</td>
+              <td class="mono">4 GB</td>
+              <td>6 to 15s (or up to 60s for consideration content)</td>
+            </tr>
+            <tr>
+              <td><strong>Feed static</strong></td>
+              <td class="mono">4:5</td>
+              <td class="mono">1080&times;1350</td>
+              <td>JPG/PNG, sRGB</td>
+              <td class="mono">30 MB</td>
+              <td>N/A</td>
+            </tr>
+            <tr>
+              <td><strong>Carousel card</strong><div class="foot">always 1:1, see note below</div></td>
+              <td class="mono">1:1</td>
+              <td class="mono">1080&times;1080</td>
+              <td>JPG/PNG or video</td>
+              <td class="mono">30 MB / 4 GB</td>
+              <td>2 to 10 cards</td>
+            </tr>
+            <tr>
+              <td><strong>Universal fallback</strong><div class="foot">when one asset must cover everything</div></td>
+              <td class="mono">1:1</td>
+              <td class="mono">1080&times;1080</td>
+              <td>JPG/PNG or video</td>
+              <td class="mono">30 MB / 4 GB</td>
+              <td>N/A</td>
+            </tr>
+            <tr>
+              <td><strong>Video stream &amp; link ads</strong><div class="foot">lowest priority placement in 2026</div></td>
+              <td class="mono">16:9 / 1.91:1</td>
+              <td class="mono">1920&times;1080</td>
+              <td>MP4/MOV</td>
+              <td class="mono">4 GB</td>
+              <td>N/A</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout amber">
+        <h4>One rule that costs accounts money</h4>
+        <p>Carousel cards must be built natively at 1:1. If you drop a 4:5 image into a carousel, Meta crops it to a center square and cuts off the top and bottom of the design. Logos and headlines routinely get clipped this way. Design carousel sets square from the first frame.</p>
+      </div>
+
+      <h3>Minimum build for any new concept</h3>
+      <p>Every approved concept should leave the design and edit stage with at least these three files, so it can deploy fast without a new round of briefing:</p>
+      <ol>
+        <li><strong>9:16 master</strong> (1080&times;1920). Build this first: it's the growth placement and the least forgiving of a lazy crop.</li>
+        <li><strong>4:5 Feed version</strong> (1080&times;1350), recomposed rather than just letterboxed from the 9:16.</li>
+        <li><strong>1:1 fallback</strong> (1080&times;1080), required for carousel and Advantage+ placements that need a square option.</li>
+      </ol>
+    </section>
+
+    <!-- 03 -->
+    <section class="block" id="principles">
+      <div class="block-head"><div class="block-num">03</div><h2>What stops the scroll</h2></div>
+      <p class="block-intro measure">These hold across every persona and every placement. If a build breaks one of these without a specific reason, it's probably wrong.</p>
+
+      <div class="grid-2">
+        <div class="card">
+          <h4>Contrast beats polish</h4>
+          <p class="soft">The eye is wired to register contrast before anything else. Color pairings with strong contrast, and a bold block behind key text, beat a muted palette that quietly matches the brand guide but blends into the feed around it. Legibility beats aesthetic restraint every time in a performance ad.</p>
+        </div>
+        <div class="card">
+          <h4>Faces work</h4>
+          <p class="soft">A clear, expressive face, whether it's the doctor, a patient, or a teammate, earns a pause that a product shot alone doesn't. This is doubly true for the video thumbnail frame, which decides whether a Reel gets tapped before it ever plays.</p>
+        </div>
+        <div class="card">
+          <h4>One message, one focal point</h4>
+          <p class="soft">Every static and every opening frame needs exactly one thing to look at and one thing to read. If a design needs two headlines to make its point, it's two ads.</p>
+        </div>
+        <div class="card">
+          <h4>Motion has to say something</h4>
+          <p class="soft">A slow logo fade doesn't register at scroll speed. A zoom into a real result, text on screen building word by word, or someone walking into frame does. If motion is purely decorative, cut it or replace it with motion that carries information.</p>
+        </div>
+        <div class="card">
+          <h4>Design for mobile, always</h4>
+          <p class="soft">Close to all Meta impressions render on a phone. Build and proof every file at phone scale, not on a full screen desktop preview, before calling it done.</p>
+        </div>
+        <div class="card">
+          <h4>Less text on the image, not more</h4>
+          <p class="soft">Meta retired the hard 20% text coverage rule in 2020, so heavy text no longer gets an image automatically rejected. It still competes for attention with Meta's own UI (CTA buttons, price tags, captions) and correlates with weaker delivery. One short headline plus one supporting line on the image is the ceiling. Let the primary text and headline fields in Ads Manager carry the rest of the message.</p>
+        </div>
+      </div>
+
+      <h3>Color notes</h3>
+      <p class="measure">Stay inside the clinic's brand palette, but check it against the feed it's competing in. Blues, greens, and oranges reliably stand out there. Be careful with red specifically: Meta's own interface uses red for notification badges, and a creative dominated by red can visually blend into the app chrome instead of standing apart from it.</p>
+
+      <h3>Accessibility is a delivery signal, not an afterthought</h3>
+      <ul class="measure">
+        <li>Write real alt text for every static: describe the image, not the call to action.</li>
+        <li>Every video ships with captions, either burned in or as an uploaded SRT. Treat this as mandatory, not optional: see Section 6 for why.</li>
+        <li>Aim for at least a 4.5:1 contrast ratio between overlay text and whatever sits behind it. White text on a busy photo usually fails this. Add a dark gradient or a solid safe block behind the text first.</li>
+      </ul>
+    </section>
+
+    <!-- 04 -->
+    <section class="block" id="static">
+      <div class="block-head"><div class="block-num">04</div><h2>Static ad standards</h2></div>
+      <p class="block-intro measure">Static isn't the fallback format. It's frequently the faster, cheaper way to test an angle before committing to a video build, and Feed is still the one placement where a strong static competes evenly with video on clicks.</p>
+
+      <h3>Composition checklist</h3>
+      <ul class="measure">
+        <li>Bold, contrasting colors that separate the subject from the background</li>
+        <li>One clear focal subject: a face, a smile, or a single product or offer element</li>
+        <li>Minimal copy on the image: one headline, one supporting line, nothing else</li>
+        <li>A visually distinct CTA. Don't let it disappear into the layout.</li>
+        <li>Logo placed small and consistent, always the same corner across a client's whole set</li>
+        <li>Color grading consistent with every other live asset for that client, so the feed reads as one brand across dozens of variations</li>
+      </ul>
+
+      <h3>Build order</h3>
+      <p class="measure">Design the 9:16 vertical first, then the 4:5 Feed master, then the 1:1 fallback. Recompose for each ratio. Don't just letterbox it or crop straight to a center square from one master into the others. A recomposed 1:1 keeps the subject centered and legible; one that's simply cropped in a hurry loses the headline or half a face.</p>
+
+      <h3>Carousels</h3>
+      <p class="measure">Every card at 1:1 (see Section 2). Beyond the spec requirement, carousels perform best when the swipe itself feels intentional: a consistent color system across cards, a visible sequence (numbered steps, a before &rarr; during &rarr; after arc, or one clinic photo per card in the same crop and grade) rather than five unrelated images bundled together.</p>
+
+      <h3>Designing for Advantage+</h3>
+      <p class="measure">Advantage+ campaigns recombine headline, image, and text elements automatically per viewer rather than showing one fixed layout to everyone. Build static assets as modular layers (background, subject, and text as elements that still read correctly if Meta's system repositions or swaps them) instead of one flattened design that only works in its original arrangement.</p>
+    </section>
+
+    <!-- 05 -->
+    <section class="block" id="video">
+      <div class="block-head"><div class="block-num">05</div><h2>Video production</h2></div>
+
+      <h3>The first three seconds</h3>
+      <p class="measure">Industry benchmarking puts roughly <strong>70% of a video ad's outcome</strong> as decided inside the opening three seconds, before the viewer has consciously registered what the ad is for. Two facts follow directly from that:</p>
+      <ul class="measure">
+        <li><strong>Design the hook for sound off.</strong> An estimated 85% of Facebook video is watched muted. If the hook depends on a voiceover landing before any text appears, most of the audience never receives it. Lead with bold text on screen and a visual that reads on its own.</li>
+        <li><strong>Cut the intro, not the payoff.</strong> Logo stings, slow fades, and establishing shots belong five seconds in, if at all, never at frame one. Open on motion that communicates something: a result, a reaction, someone walking into frame, text building character by character.</li>
+      </ul>
+
+      <h3>Four hook structures worth defaulting to</h3>
+      <div class="grid-2">
+        <div class="card">
+          <h4>Problem first</h4>
+          <p class="soft">Open on the pain point before the product ever appears. "Most people pay too much for a smile that takes two years." Works especially well for the Phase 1 Parent, who is already comparing options.</p>
+        </div>
+        <div class="card">
+          <h4>Result first</h4>
+          <p class="soft">Show the transformation or end state in frame one, then explain how. Skips the setup and answers "what's in it for me" before the viewer can scroll past it.</p>
+        </div>
+        <div class="card">
+          <h4>Pattern interrupt</h4>
+          <p class="soft">Open by contradicting what an ad is supposed to say: "Don't get Invisalign until you ask this." Works because it doesn't read as a pitch in the first beat.</p>
+        </div>
+        <div class="card">
+          <h4>Direct to camera</h4>
+          <p class="soft">A real person speaking straight into the lens: doctor, patient, or teammate. Eye contact reads as a message meant for the individual viewer, which is exactly what makes talking head UGC hold attention.</p>
+        </div>
+      </div>
+      <p class="measure">Hook performance on identical footage has been reported to swing <strong>40 to 60%, and in some cases as much as 4x</strong>, based purely on the opening line. Never treat the hook as fixed. Cut 3 to 5 different opening lines against the same body footage and let performance data, not instinct, pick the winner.</p>
+
+      <h3>The internal template: the Dean Reel format</h3>
+      <p class="measure">The <em>Dean Reel Scripts</em> in this project are the working example of everything above, applied to the agency's own acquisition marketing. Both versions follow the same reusable structure. Use it as a starting skeleton for client UGC style reels, not just for Dean's own content:</p>
+      <ol class="measure">
+        <li><strong>Cold open (0 to 4 seconds)</strong>: a striking visual or a bad number on screen, no logo, no setup.</li>
+        <li><strong>The statement (4 to 10 seconds)</strong>: direct to camera, deadpan, states who this is and the core proof point in one line.</li>
+        <li><strong>The build (10 to 16 seconds)</strong>: quick cuts of proof such as dashboards, results, or a phone lighting up. Text on screen reinforces the number.</li>
+        <li><strong>The twist, a third party beat</strong>: a second person (teammate, patient, colleague) breaks in. This one cut does more for believability than anything the main subject says, because it reads as someone else vouching rather than the subject selling.</li>
+        <li><strong>The turn</strong>: the subject addresses the camera again with the ask, delivered flat, not hyped.</li>
+        <li><strong>End card</strong>: logo plus exactly one CTA. Never a phone number <em>and</em> a booking link on the same card. Pick one so the next step is unambiguous.</li>
+      </ol>
+
+      <h3>Runtime targets</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Placement</th><th>Ideal length</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Reels / Stories</td><td class="mono">15 to 30s</td><td>Passive viewing at swipe speed. The whole idea has to land before the swipe.</td></tr>
+            <tr><td>Feed (short form)</td><td class="mono">6 to 15s</td><td>Higher intent, more room to read, but still front load the message.</td></tr>
+            <tr><td>Feed (consideration)</td><td class="mono">30 to 60s</td><td>Only for genuinely engaging content: a full patient story, a doctor Q&amp;A.</td></tr>
+            <tr><td>Hard ceiling</td><td class="mono">~90s</td><td>Past this, split the idea: a short hook ad plus a longer remarketing follow up outperforms one long ad almost every time.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Why UGC style wins on this account type</h3>
+      <p class="measure">Selfie style testimonials and casual, native feeling video are consistently reported to outperform polished studio production in prospecting. The pattern is strong enough that industry benchmarking has put UGC style creative's click through rate at several multiples of the polished ad baseline. Three reasons show up repeatedly:</p>
+      <ul class="measure">
+        <li><strong>Feed camouflage.</strong> A highly produced ad looks visibly different from the organic content around it, so the reflex to scroll past it fires faster.</li>
+        <li><strong>Social proof transfer.</strong> A person speaking casually to camera reads as a recommendation, not an ad.</li>
+        <li><strong>Lower resistance.</strong> A polished ad signals "sales pitch"; a casual video signals "someone telling me something," which lowers the viewer's guard before the offer even lands.</li>
+      </ul>
+      <p class="measure">This doesn't mean lower quality. It means casual framing: handheld or gimbal smoothed rather than locked to a tripod, natural rooms and offices rather than a lightbox set, audio that feels native rather than a stock corporate bed. Budget for UGC style production first and reserve fully polished brand video for retargeting and site use, where credibility matters more than the pattern interrupt effect.</p>
+
+      <h3>Audio</h3>
+      <ul class="measure">
+        <li>Captions are mandatory on every video, not something nice to have. See Section 6.</li>
+        <li>Use only music that's cleared for royalties: Meta's own Sound Collection, or a track the agency holds a commercial license for. Never a recognizable commercial or streaming track. This is a compliance and takedown risk, not just a style note.</li>
+        <li>Mix dialogue loud and clean; assume the first watch happens muted and the second, if it happens, happens with sound on a phone speaker, not headphones.</li>
+      </ul>
+    </section>
+
+    <!-- 06 -->
+    <section class="block" id="typography">
+      <div class="block-head"><div class="block-num">06</div><h2>Type &amp; caption system</h2></div>
+      <p class="block-intro measure">Type is doing more work than brand decoration here. On a muted autoplay, it is the message. Treat caption styling as a functional system, not a choice made fresh for every video.</p>
+
+      <h3>Sizing &amp; placement</h3>
+      <ul class="measure">
+        <li>Caption text at roughly <strong>7 to 10% of frame height</strong>, around 52 to 72pt on a 1080&times;1920 export. Below 5% forces the viewer to squint; above 12% starts covering the picture.</li>
+        <li>Center or lower middle third of the frame, never touching the top ~14% (profile name, the Sponsored label) or bottom ~35% (caption, CTA button, engagement icons) of a Stories or Reels canvas. See the diagram in Section 12.</li>
+        <li>Keep a margin from the right edge too. That's where Instagram stacks its own like, comment, and share icon column.</li>
+      </ul>
+
+      <h3>Fonts</h3>
+      <p class="measure">Bold, geometric sans serif faces are the safe default for captions on screen because they hold up at small sizes on a bright phone screen in bad light. Reasonable house picks: <strong>Montserrat Bold</strong> or <strong>Poppins Bold</strong> for standard captions, <strong>Anton</strong> or <strong>League Spartan</strong> for high energy hooks that need to read instantly. Thin weights, script faces, and heavy italics all fail this test. Reserve them for a static logotype at most, never for a caption that has to be read in under a second.</p>
+      <p class="measure">Pick one display font and one caption font per client and reuse them across every asset. That consistency is what makes a client's ad library read as one recognizable channel instead of a pile of unrelated, standalone videos.</p>
+
+      <h3>Contrast treatment</h3>
+      <p class="measure">Plain text laid over live footage disappears the moment the background gets busy. Default to white text with either a dark outline or drop shadow, or a solid, slightly transparent block behind it to keep the text safe. That's the same principle Instagram's own native caption styling uses, for the same reason.</p>
+
+      <h3>Pacing captions</h3>
+      <p class="measure">Reveals that show one word at a time, or a short chunk of 2 to 4 words, held roughly 600 to 900 milliseconds per chunk, are the current sweet spot: fast enough to feel energetic, slow enough that the eye actually finishes reading before the words change. The earlier ultra rapid style, whole words flashing well under half a second, now reads as dated and cheap rather than urgent. Slow the cut down if a caption template defaults to that speed.</p>
+      <p class="measure">Case style is a creative choice per concept, not a fixed rule. Bold capitals still work for high energy beats, while mixed case or lowercase gives a hook a more conversational tone that feels less like an ad. Pick one register and hold it for the whole video. Switching partway through reads as inconsistent, not dynamic.</p>
+    </section>
+
+    <!-- 07 -->
+    <section class="block" id="branding">
+      <div class="block-head"><div class="block-num">07</div><h2>Brand consistency across the account</h2></div>
+      <p class="block-intro measure">A single client can have dozens of live creative variations running at once across Feed, Stories, and Reels. The goal is that all of them look like they came from the same clinic, even when they're built weeks apart by different editors.</p>
+
+      <h3>What to lock per client</h3>
+      <ul class="measure">
+        <li><strong>Color grade / LUT.</strong> Apply the same grading pass to every video for a given client so footage shot in different rooms, on different days, still matches.</li>
+        <li><strong>Logo treatment.</strong> Same corner, same relative size, every format. Pull the logo from the client's approved asset library, never a screenshot or a resized copy of a copy.</li>
+        <li><strong>NAP consistency.</strong> Any name, address, or phone number shown on screen should match exactly what's set in the client's GHL Custom Values sheet. A mismatched phone number on a video is a silent conversion leak.</li>
+        <li><strong>End card CTA.</strong> One clear next step, not two. A phone number or a booking link, matching whichever the approved copy specifies. This is the same rule the Dean Reel Scripts production notes call out, applied to every client, not just internal marketing.</li>
+      </ul>
+
+      <h3>Using the Smile Gallery &amp; doctor assets</h3>
+      <p class="measure">Match lighting, angle, and crop between any before and after pair so the comparison reads as credible documentation rather than a staged effect. Inconsistent framing is usually what makes a transformation look exaggerated even when it isn't. Skip gimmicky framing devices such as dramatic zooms, spinning wipes, or circled problem areas. Beyond looking dated, this style of emphasis is also the kind of treatment most likely to draw a policy review. See Section 8 before building anything with before/after material.</p>
+    </section>
+
+    <!-- 08 -->
+    <section class="block" id="compliance">
+      <div class="block-head"><div class="block-num">08</div><h2>Compliance, read this before you build anything</h2></div>
+      <div class="block-intro measure">
+        <p>The account setup already covers compliance at the account level: Invisalign Provider whitelisting, remarketing built on general Website Visitors rather than health conditions to stay HIPAA safe, and a consent checkbox on every GHL form. This section is the creative side counterpart: the rules that live inside the file itself, not the ad account settings.</p>
+        <p>Orthodontic and dental creative sits at the intersection of Meta's two strictest content areas: personal health advertising and personal attributes copy. Getting this wrong doesn't just get one ad rejected. Repeated violations can restrict the whole client's ad account.</p>
+      </div>
+
+      <div class="callout stop">
+        <h4>Rule 1: the "you" test on every line of text on screen and voiceover</h4>
+        <p>Meta's Personal Attributes policy prohibits any ad content that asserts or implies the specific viewer has a health condition, disability, or other protected trait. The trap is addressing the viewer directly: the moment copy implies "we know you specifically have this," it's a violation, regardless of whether the targeting is accurate. This applies to captions burned into the video and text on screen exactly as much as it applies to primary text and headlines.</p>
+      </div>
+
+      <div class="swap">
+        <div class="swap-box no">
+          <div class="swap-label">&#10005; WON'T CLEAR REVIEW</div>
+          "Struggling with crooked teeth?"<br>"Tired of hiding your smile?"<br>"Does your child need braces?"
+        </div>
+        <div class="swap-box yes">
+          <div class="swap-label">&#10003; SAYS THE SAME THING, CLEARS</div>
+          "Invisalign treatment for teens and adults"<br>"Straighten your smile: book a free consult"<br>"Phase 1 orthodontic evaluations available"
+        </div>
+      </div>
+      <p class="measure">The difference isn't the word "you". "Book your appointment" and "get your free guide" are both fine, because they don't attach a protected trait to the pronoun. The line is crossed only when copy asserts the specific viewer has a condition. Describing the service or the audience in general terms is always safe; diagnosing the viewer is never safe.</p>
+
+      <div class="callout stop">
+        <h4>Rule 2: before and after imagery is high risk, not banned</h4>
+        <p>Meta's ad standards restrict images that emphasize an "ideal" body or imply unexpected or unlikely personal results, a category orthodontic before/after images sit directly inside. This doesn't mean before/after content can't run; it means the framing needs to avoid reading as a dramatic personal transformation.</p>
+      </div>
+      <ul class="measure">
+        <li>Favor a documentary results framing over a dramatic wipe that places images side by side with arrows, or a zoom onto the "problem."</li>
+        <li>Pair any before/after with testimonial language about the patient's experience, such as comfort, staff, or ease of treatment, rather than narration that dwells on the visual transformation itself.</li>
+        <li>Never caption a before/after with copy that could be read as asserting the viewer shares the same starting condition (ties directly back to Rule 1).</li>
+      </ul>
+
+      <div class="callout amber">
+        <h4>Rule 3: consent is a file requirement, not just a form field</h4>
+        <p>The account setup covers the GHL consent checkbox. At the asset level: never cut a patient's face, voice, name, or before/after photos into an ad without a signed media release on file covering exactly that use, social media advertising specifically, not just "the website." For any patient under 18, which is routine for Phase 1 Parent content, the release needs a parent or guardian signature. If you don't know whether a release exists for a piece of footage, don't use it. Confirm with the AM first.</p>
+      </div>
+
+      <h3>Rule 4: keep claims short of a guarantee</h3>
+      <p class="measure">Avoid guaranteeing a specific outcome or timeline in copy on screen. "Straight teeth in 6 months, guaranteed" is a claims substantiation problem as well as a policy one. "Most patients complete treatment in as little as X months" or "ask about our accelerated options" says the same thing without the guarantee.</p>
+
+      <h3>Rule 5: Invisalign is a trademark, not a generic term</h3>
+      <p class="measure">Only use the official Invisalign logo or branded assets on a client's creative if that clinic has completed Invisalign Provider whitelisting. For any account where that's not confirmed, describe the product generically as clear aligners in the visual, and check with the AM before designing around the Invisalign mark itself.</p>
+
+      <h3>Quick do / don't reference</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Topic</th><th>Avoid</th><th>Use instead</th></tr></thead>
+          <tbody>
+            <tr><td>Health condition copy</td><td>"Do you have an overbite?"</td><td>"Overbite correction available for all ages"</td></tr>
+            <tr><td>Financial status</td><td>"Can't afford braces?"</td><td>"0% down payment plans available"</td></tr>
+            <tr><td>Before/after framing</td><td>Dramatic wipe, circled flaw, arrow callouts</td><td>Stills placed side by side, testimonial voiceover on experience</td></tr>
+            <tr><td>Outcome claims</td><td>"Guaranteed straight teeth"</td><td>"Ask about your personalized treatment timeline"</td></tr>
+            <tr><td>Minors on camera</td><td>Any use without a signed release naming that specific use</td><td>Parent or guardian signature on file before editing begins</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 09 -->
+    <section class="block" id="files">
+      <div class="block-head"><div class="block-num">09</div><h2>Naming, folders &amp; handoff</h2></div>
+      <p class="block-intro measure">Assets move from designer or editor to AM to Ads Manager. A consistent naming and folder system is what makes that handoff fast instead of a scavenger hunt.</p>
+
+      <h3>File naming convention</h3>
+      <div class="table-wrap">
+        <table>
+          <tbody>
+            <tr><td class="mono">CLIENTCODE</td><td>Short client code used in Ads Manager / the AM's board (e.g. <code>SMITHORTHO</code>)</td></tr>
+            <tr><td class="mono">PERSONA</td><td><code>P1PARENT</code> or <code>AESTHADULT</code></td></tr>
+            <tr><td class="mono">FORMAT</td><td><code>9x16</code>, <code>4x5</code>, or <code>1x1</code></td></tr>
+            <tr><td class="mono">CONCEPT</td><td>Short slug for the hook or angle, e.g. <code>screenshotcpa</code>, <code>meetdean</code></td></tr>
+            <tr><td class="mono">VERSION</td><td><code>v1</code>, <code>v2</code>, and so on. Increments on every additional edit, never overwrites</td></tr>
+            <tr><td class="mono">DATE</td><td><code>YYYYMMDD</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="measure">Example: <code>SMITHORTHO_AESTHADULT_9x16_freepreview_v2_20260921.mp4</code></p>
+
+      <h3>Folder structure</h3>
+      <ul class="measure">
+        <li><code>/ClientName/01_RawAssets</code>: unedited footage, photos, and doctor or clinic source files collected during onboarding</li>
+        <li><code>/ClientName/02_ApprovedCopy</code>: the client's signed off approval deck, kept as the single source of truth for copy</li>
+        <li><code>/ClientName/03_InProgress</code>: working project files (PSD, AI, Premiere, CapCut, or Resolve projects)</li>
+        <li><code>/ClientName/04_FinalDeliverables/[Static|Video]/[Placement]</code>: exported files that are ready to upload, nothing else</li>
+        <li><code>/ClientName/05_Archive</code>: retired creative, kept for reference and reuse</li>
+      </ul>
+
+      <h3>Before you hand off to the AM</h3>
+      <ul class="measure">
+        <li>Export matches the placement it's built for, not a generic "master" file dropped in every folder</li>
+        <li>Captions are burned in or the SRT is attached alongside the video</li>
+        <li>Filename follows the convention above</li>
+        <li>Copy on the asset matches the approved deck exactly, with no unapproved wording changes made at the last minute</li>
+        <li>No placeholder text, template watermarks, or "V1 DRAFT" stamps left in the export</li>
+      </ul>
+    </section>
+
+    <!-- 10 -->
+    <section class="block" id="testing">
+      <div class="block-head"><div class="block-num">10</div><h2>Testing, scaling &amp; fatigue</h2></div>
+      <p class="block-intro measure">The account side of this already runs on a set process: new assets launch into a Dynamic Creative Sandbox, run untouched for a 72 hour learning phase, and the creative with the lowest CPL graduates into the core scaling campaign. What that means for the person building the assets:</p>
+      <ul class="measure">
+        <li>The sandbox needs <strong>variety</strong>, not one polished hero cut. Feed it multiple hooks, multiple formats such as static, video, and carousel, and multiple angles per concept. Advantage+ testing generally wants a deeper bench, roughly 6 to 10 or more live variations, than a single ad set tested by hand would.</li>
+        <li>Don't expect feedback on the same day. The 72 hour learning window means a request for "one more version" a few hours after launch is premature. A request the following week, once a winner has graduated and started to age, is exactly on schedule.</li>
+        <li>Once a creative graduates to the Scaling campaign, the job isn't done. It's now a countdown, because winning creative still fatigues.</li>
+      </ul>
+
+      <h3>Reading fatigue signals</h3>
+      <p class="measure">The AM owns the reporting, but knowing what triggers a "we need a fresh cut" request explains why the request lands when it does:</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Signal</th><th>Watch line</th><th>Refresh line</th></tr></thead>
+          <tbody>
+            <tr><td>Frequency (prospecting)</td><td class="mono">above 2.5</td><td class="mono">above 3.5 to 4.0</td></tr>
+            <tr><td>CTR versus its own baseline from the past 7 to 14 days</td><td class="mono">down about 15%</td><td class="mono">down 20 to 25% or more</td></tr>
+            <tr><td>CPM, no auction explanation</td><td class="mono">up about 10%</td><td class="mono">up 15 to 20% or more</td></tr>
+            <tr><td>Hook rate (view rate at three seconds)</td><td colspan="2">Usually the earliest signal; decays before CTR does</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="measure">Reels fatigue fastest of any placement, commonly inside 7 to 14 days at moderate spend, because the format demands full attention rather than tolerating passive repeat exposure. Retargeting tolerates much higher frequency (a weekly range of about 4 to 6 is generally fine) since the audience already has intent.</p>
+
+      <h3>Production cadence that keeps up</h3>
+      <p class="measure">The teams that stay ahead of fatigue always have the next variant tagged and ready before the current winner needs replacing, rather than reacting after a CPL spike. In practice, produce hook variants in batches off one body of footage (one shoot, five opening lines) rather than treating every new hook as a full reshoot, since hook performance on identical footage swings as much as it does (see Section 5). Win rates on brand new concepts typically run in the single digits, so volume and iteration speed matter more than perfecting any one cut before it ships.</p>
+    </section>
+
+    <!-- 11 -->
+    <section class="block" id="qa">
+      <div class="block-head"><div class="block-num">11</div><h2>QA checklist before upload</h2></div>
+      <p class="block-intro measure">The creative side checklist to run before anything moves to the AM's board. Checks save locally in your browser so you can come back to a list that isn't finished yet.</p>
+
+      <ul class="qa-list">
+        <li class="qa-item"><input type="checkbox" id="qa1" data-id="qa1"><label for="qa1">Correct dimensions exported for every placement it's going to <span class="qa-note">Check it against the Section 2 table. Don't eyeball it.</span></label></li>
+        <li class="qa-item"><input type="checkbox" id="qa2" data-id="qa2"><label for="qa2">Every file is under its size cap (30MB image / 4GB video)</label></li>
+        <li class="qa-item"><input type="checkbox" id="qa3" data-id="qa3"><label for="qa3">Captions present and synced on every video <span class="qa-note">Burned in, or SRT attached. Not left out because it's "a short one."</span></label></li>
+        <li class="qa-item"><input type="checkbox" id="qa4" data-id="qa4"><label for="qa4">Safe zones respected in the actual Stories/Reels frame preview, not just the raw canvas</label></li>
+        <li class="qa-item"><input type="checkbox" id="qa5" data-id="qa5"><label for="qa5">No text on screen or voiceover fails the "you" test from Section 8</label></li>
+        <li class="qa-item"><input type="checkbox" id="qa6" data-id="qa6"><label for="qa6">Any patient likeness or before/after is covered by a signed media release naming that specific use</label></li>
+        <li class="qa-item"><input type="checkbox" id="qa7" data-id="qa7"><label for="qa7">End card has exactly one CTA: phone number or booking link, never both</label></li>
+        <li class="qa-item"><input type="checkbox" id="qa8" data-id="qa8"><label for="qa8">Logo present, correctly sized, and in the client's standard corner</label></li>
+        <li class="qa-item"><input type="checkbox" id="qa9" data-id="qa9"><label for="qa9">Color grade matches the rest of this client's live creative set</label></li>
+        <li class="qa-item"><input type="checkbox" id="qa10" data-id="qa10"><label for="qa10">Music or audio is Meta Sound Collection or licensed to the agency, nothing pulled from streaming</label></li>
+        <li class="qa-item"><input type="checkbox" id="qa11" data-id="qa11"><label for="qa11">Alt text written for static images</label></li>
+        <li class="qa-item"><input type="checkbox" id="qa12" data-id="qa12"><label for="qa12">File named per the Section 9 convention and saved to the correct handoff folder</label></li>
+        <li class="qa-item"><input type="checkbox" id="qa13" data-id="qa13"><label for="qa13">Copy on the asset matches the approved deck exactly</label></li>
+      </ul>
+      <div class="qa-controls"><button type="button" id="qa-reset">Reset checklist</button></div>
+    </section>
+
+    <!-- 12 -->
+    <section class="block" id="cheatsheet">
+      <div class="block-head"><div class="block-num">12</div><h2>One page reference</h2></div>
+      <p class="block-intro measure">Pin this. Everything else in the playbook explains why. This is the quick reference version.</p>
+
+      <div class="diagram-row">
+        <figure class="diagram-card">
+          <svg viewBox="0 0 340 300" width="100%" height="auto" role="img" aria-label="Aspect ratio comparison: 9 by 16, 4 by 5, and 1 by 1">
+            <g>
+              <rect x="18" y="20" width="88" height="248" rx="6" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
+              <text x="62" y="285" text-anchor="middle" fill="var(--ink-soft)" font-size="11">9:16</text>
+              <text x="62" y="14" text-anchor="middle" fill="var(--ink-faint)" font-size="9">1080&times;1920</text>
+
+              <rect x="132" y="93" width="88" height="175" rx="6" fill="none" stroke="var(--go)" stroke-width="2.5"/>
+              <text x="176" y="285" text-anchor="middle" fill="var(--ink-soft)" font-size="11">4:5</text>
+              <text x="176" y="87" text-anchor="middle" fill="var(--ink-faint)" font-size="9">1080&times;1350</text>
+
+              <rect x="246" y="128" width="88" height="140" rx="6" fill="none" stroke="var(--amber)" stroke-width="2.5"/>
+              <text x="290" y="285" text-anchor="middle" fill="var(--ink-soft)" font-size="11">1:1</text>
+              <text x="290" y="122" text-anchor="middle" fill="var(--ink-faint)" font-size="9">1080&times;1080</text>
+            </g>
+          </svg>
+          <figcaption>Build 9:16 first, then recompose for 4:5 and 1:1. Never blindly crop one from another.</figcaption>
+        </figure>
+
+        <figure class="diagram-card">
+          <svg viewBox="0 0 300 300" width="100%" height="auto" role="img" aria-label="Safe zone diagram for Stories and Reels vertical video">
+            <g>
+              <rect x="90" y="10" width="120" height="280" rx="16" fill="none" stroke="var(--ink-faint)" stroke-width="2"/>
+              <rect x="94" y="14" width="112" height="39" fill="var(--stop)" opacity="0.16"/>
+              <text x="150" y="34" text-anchor="middle" fill="var(--stop)" font-size="9">AVOID</text>
+              <text x="150" y="46" text-anchor="middle" fill="var(--ink-faint)" font-size="7.5">profile &middot; sponsored label</text>
+
+              <rect x="94" y="53" width="112" height="138" fill="var(--go)" opacity="0.14"/>
+              <text x="150" y="118" text-anchor="middle" fill="var(--go)" font-size="9">SAFE ZONE</text>
+              <text x="150" y="130" text-anchor="middle" fill="var(--ink-faint)" font-size="7.5">critical text &amp; faces</text>
+
+              <rect x="94" y="191" width="112" height="95" fill="var(--stop)" opacity="0.16"/>
+              <text x="150" y="232" text-anchor="middle" fill="var(--stop)" font-size="9">AVOID</text>
+              <text x="150" y="244" text-anchor="middle" fill="var(--ink-faint)" font-size="7.5">caption &middot; CTA &middot;</text>
+              <text x="150" y="254" text-anchor="middle" fill="var(--ink-faint)" font-size="7.5">engagement icons</text>
+            </g>
+          </svg>
+          <figcaption>Unified Stories/Reels safe zone: the top ~14% and bottom ~35% are UI territory.</figcaption>
+        </figure>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h4>Build order</h4>
+          <p class="soft">9:16 (1080&times;1920) &rarr; 4:5 (1080&times;1350) &rarr; 1:1 (1080&times;1080). Carousel is always 1:1.</p>
+        </div>
+        <div class="card">
+          <h4>Video length</h4>
+          <p class="soft">Reels/Stories 15 to 30s &middot; Feed 6 to 15s &middot; hard ceiling ~90s.</p>
+        </div>
+        <div class="card">
+          <h4>The hook</h4>
+          <p class="soft">Sound off design. No logo or fade before second 5. Cut 3+ hook variants per body of footage.</p>
+        </div>
+        <div class="card">
+          <h4>Caption type</h4>
+          <p class="soft">Bold sans serif, about 7 to 10% of frame height, 600 to 900ms per chunk, dark outline or scrim behind it.</p>
+        </div>
+        <div class="card">
+          <h4>The one compliance line</h4>
+          <p class="soft">If a sentence could be read as "we know you have this condition," rewrite it. See Section 8.</p>
+        </div>
+        <div class="card">
+          <h4>End card</h4>
+          <p class="soft">Logo plus exactly one CTA. Phone number or booking link, never both.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13 -->
+    <section class="block" id="sources">
+      <div class="block-head"><div class="block-num">13</div><h2>Sources</h2></div>
+      <p class="block-intro measure">Compiled from Meta's own advertiser documentation plus current industry benchmarking, current as of September 2026. Specs and policy language are the parts most likely to drift. Check them against the live Ads Manager and Meta's Transparency Center before a major campaign push, and flag anything out of date to your AM so this document gets updated.</p>
+      <ul class="measure soft" style="font-size:14px;">
+        <li>Meta Business Help Center: Ads Guide and advertising specifications</li>
+        <li>Meta Transparency Center: Ad Standards on Privacy Violations and Personal Attributes, and the Personal Health policy</li>
+        <li>Tinuiti: Q1 2026 Digital Ads Benchmark Report (Instagram placement mix)</li>
+        <li>Motion: 2026 Creative Benchmarks Report (creative lifespan and win rate figures)</li>
+        <li>Industry benchmarking on hook rate, fatigue thresholds, and typography, aggregated across current (2026) paid social and short form video publishers</li>
+      </ul>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <p>Internal reference for Ortho Marketing designers and editors &middot; Not for external distribution.</p>
+</footer>
+
+<script>
+(function(){
+  var KEY = 'ortho-meta-playbook-qa-v1';
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('.qa-item input[type="checkbox"]'));
+
+  function rowFor(box){ return box.closest('.qa-item'); }
+
+  function applyState(box){
+    var row = rowFor(box);
+    if(row){ row.classList.toggle('is-done', box.checked); }
+  }
+
+  function save(){
+    try{
+      var state = {};
+      boxes.forEach(function(b){ if(b.checked){ state[b.dataset.id] = true; } });
+      localStorage.setItem(KEY, JSON.stringify(state));
+    }catch(e){ /* storage unavailable — checklist still works, just doesn't persist */ }
+  }
+
+  function load(){
+    try{
+      var raw = localStorage.getItem(KEY);
+      var state = raw ? JSON.parse(raw) : {};
+      boxes.forEach(function(b){
+        if(state && state[b.dataset.id]){ b.checked = true; }
+        applyState(b);
+      });
+    }catch(e){ /* ignore */ }
+  }
+
+  boxes.forEach(function(b){
+    b.addEventListener('change', function(){ applyState(b); save(); });
+  });
+
+  var resetBtn = document.getElementById('qa-reset');
+  if(resetBtn){
+    resetBtn.addEventListener('click', function(){
+      boxes.forEach(function(b){ b.checked = false; applyState(b); });
+      try{ localStorage.removeItem(KEY); }catch(e){}
+    });
+  }
+
+  load();
+})();
+</script>
+
+</body>
+</html>
